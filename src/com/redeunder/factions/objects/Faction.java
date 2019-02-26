@@ -1,7 +1,9 @@
 package com.redeunder.factions.objects;
 
 import com.redeunder.factions.Factions;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +55,31 @@ public class Faction {
 
     public ArrayList<Member> getRecruits() {
         return recruits;
+    }
+
+    public ArrayList<Member> getAll() {
+        ArrayList<Member> all = new ArrayList<>();
+        all.add(leader);
+        if (!captains.isEmpty()) {
+            all.addAll(captains);
+        }
+        if (!members.isEmpty()) {
+            all.addAll(members);
+        }
+        if (!recruits.isEmpty()) {
+            all.addAll(recruits);
+        }
+        return all;
+    }
+
+    public ArrayList<Player> getAllOnline() {
+        ArrayList<Player> all = new ArrayList<>();
+        for (Member member : getAll()) {
+            if ((member != null) && (Bukkit.getPlayer(member.getName()) != null)) {
+                all.add(Bukkit.getPlayer(member.getName()));
+            }
+        }
+        return all;
     }
 
     public void setClaims(ArrayList<Claim> claims) {
