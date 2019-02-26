@@ -1,0 +1,7 @@
+MySQL:
+  SQLite: true
+  Host: localhost
+  Port: 3306
+  Database: underfactions
+  Username: root
+  Password:
