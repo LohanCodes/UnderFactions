@@ -1,6 +1,6 @@
 package com.redeunder.factions.database;
 
-import com.redeunder.factions.Factions;
+import com.redeunder.factions.UnderFactions;
 import org.bukkit.plugin.Plugin;
 
 import java.io.File;
@@ -21,10 +21,10 @@ public class MySQL {
                     file.createNewFile();
                 }
                 // TODO: SQLite Driver Manager Connection URL
-                Factions.getInstance().console("Conectado ao database com sucesso! Usando SQLite");
+                UnderFactions.getInstance().console("Conectado ao database com sucesso! Usando SQLite");
             } else {
                 connection = DriverManager.getConnection("jdbc:mysql://" + url + ":" + port + "/" + db, user, pass);
-                Factions.getInstance().console("Conectado ao database com sucesso! Usando MySQL");
+                UnderFactions.getInstance().console("Conectado ao database com sucesso! Usando MySQL");
             }
 
             connection.createStatement().executeUpdate("CREATE TABLE IF NOT EXISTS underFactions (faction_name TEXT, faction_tag TEXT, faction_base TEXT, faction_bank TEXT, faction_claims TEXT, faction_allies TEXT, faction_enemies TEXT, faction_leader TEXT, faction_captains TEXT, faction_members TEXT, faction_recruits TEXT)");

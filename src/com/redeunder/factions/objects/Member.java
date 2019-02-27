@@ -1,6 +1,6 @@
 package com.redeunder.factions.objects;
 
-import com.redeunder.factions.Factions;
+import com.redeunder.factions.UnderFactions;
 import com.redeunder.factions.enums.Role;
 
 import java.util.ArrayList;
@@ -94,7 +94,7 @@ public class Member {
     }
 
     public static List<Member> getMembers() {
-        return new ArrayList<>(Factions.getInstance().members.values());
+        return new ArrayList<>(UnderFactions.getInstance().members.values());
     }
 
     public void saveMember() {

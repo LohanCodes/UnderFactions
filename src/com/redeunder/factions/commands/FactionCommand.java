@@ -1,6 +1,6 @@
 package com.redeunder.factions.commands;
 
-import com.redeunder.factions.Factions;
+import com.redeunder.factions.UnderFactions;
 import com.redeunder.factions.commands.arguments.Argument;
 import com.redeunder.factions.objects.Member;
 import com.redeunder.factions.utilities.Statics;
@@ -21,7 +21,7 @@ public class FactionCommand extends Command {
         }
 
         Player player = (Player) sender;
-        Member member = Factions.getInstance().members.get(player.getName());
+        Member member = UnderFactions.getInstance().members.get(player.getName());
         if (member.hasFaction()) {
             // TODO: Open Main Faction View Inventory
         } else {

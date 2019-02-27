@@ -1,6 +1,6 @@
 package com.redeunder.factions.objects;
 
-import com.redeunder.factions.Factions;
+import com.redeunder.factions.UnderFactions;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -82,6 +82,26 @@ public class Faction {
         return all;
     }
 
+    public int getPower() {
+        int i = 0;
+        for (Member member : getAll()) {
+            if (member != null) {
+                i += member.getPower();
+            }
+        }
+        return i;
+    }
+
+    public int getPowerMax() {
+        int i = 0;
+        for (Member member : getAll()) {
+            if (member != null) {
+                i += member.getPowerMax();
+            }
+        }
+        return i;
+    }
+
     public void setClaims(ArrayList<Claim> claims) {
         this.claims = claims;
     }
@@ -99,7 +119,7 @@ public class Faction {
     }
 
     public static List<Faction> getFactions() {
-        return new ArrayList<>(Factions.getInstance().factions.values());
+        return new ArrayList<>(UnderFactions.getInstance().factions.values());
     }
 
     public void saveFaction() {

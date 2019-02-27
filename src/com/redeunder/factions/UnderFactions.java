@@ -1,5 +1,7 @@
 package com.redeunder.factions;
 
+import com.redeunder.factions.commands.FactionCommand;
+import com.redeunder.factions.commands.arguments.CreateArgument;
 import com.redeunder.factions.config.Messages;
 import com.redeunder.factions.config.Settings;
 import com.redeunder.factions.database.Methods;
@@ -9,17 +11,17 @@ import com.redeunder.factions.managers.FactionManager;
 import com.redeunder.factions.managers.MemberManager;
 import com.redeunder.factions.objects.Faction;
 import com.redeunder.factions.objects.Member;
+import com.redeunder.factions.scoreboard.Board;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.IOException;
 import java.util.HashMap;
 
-public class Factions extends JavaPlugin {
+public class UnderFactions extends JavaPlugin {
 
-    public static Factions getInstance() {
-        return getPlugin(Factions.class);
+    public static UnderFactions getInstance() {
+        return getPlugin(UnderFactions.class);
     }
 
     public HashMap<String, Faction> factions = new HashMap<>();
@@ -66,6 +68,8 @@ public class Factions extends JavaPlugin {
         console("Foram carregados " + i + " members em " + c + " segundos.");
         console("Foram carregados " + q + " factions em " + c + " segundos.");
 
+        Board.start();
+
         console("Habilitado com sucesso!");
     }
 
@@ -96,7 +100,9 @@ public class Factions extends JavaPlugin {
     }
 
     private void initializeCommands() {
-
+        new FactionCommand(
+                new CreateArgument()
+        ).register(this, "f");
     }
 
     public void console(String message) {
